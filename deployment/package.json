@@ -3,7 +3,6 @@
   "private": true,
   "version": "0.0.1",
   "scripts": {
-    "build": "tsc",
     "deploy-cognito": "cdk deploy system-cognito --require-approval never --app 'tsx ./src/bin/cognito.ts'",
     "destroy-cognito": "cdk destroy system-cognito --force --require-approval never --app 'tsx ./src/bin/cognito.ts'",
     "clean": "rm -rf node_modules && rm -rf cdk.out",
