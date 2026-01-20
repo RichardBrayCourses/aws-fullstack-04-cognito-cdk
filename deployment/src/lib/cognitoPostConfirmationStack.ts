@@ -22,24 +22,12 @@ export class CognitoPostConfirmationStack extends Stack {
 
     const uniquePrefix = `${systemName}-post-confirmation`;
 
-    // Build environment variables
-    const environment: Record<string, string> = {
-      DUMMY_ENVIRONMENT_VARIABLE: "dummy",
-    };
-
     this.lambda = new NodejsFunction(this, uniquePrefix, {
       entry: join(__dirname, "..", "lambdas", "postConfirmation.ts"),
       handler: "handler",
       functionName: uniquePrefix,
-      runtime: Runtime.NODEJS_20_X,
-      environment,
-      bundling: {
-        nodeModules: ["pg", "@aws-sdk/client-ssm"],
-      },
+      runtime: Runtime.NODEJS_LATEST,
     });
 
-    new CfnOutput(this, "PostConfirmationLambdaArn", {
-      value: this.lambda.functionArn,
-    });
   }
 }

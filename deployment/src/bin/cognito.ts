@@ -9,14 +9,14 @@ const systemName = "uptickart";
 
 const postConfirmationStack = new CognitoPostConfirmationStack(
   app,
-  "system-cognito-post-confirmation-stack",
+  "system-cognito-post-confirmation",
   {
     systemName,
   },
 );
 
 // Create Cognito stack
-new CognitoStack(app, "system-cognito-stack", {
+new CognitoStack(app, "system-cognito", {
   systemName,
   postConfirmationLambda: postConfirmationStack.lambda,
 });
