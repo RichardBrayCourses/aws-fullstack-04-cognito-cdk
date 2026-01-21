@@ -20,7 +20,6 @@ export class CognitoStack extends Stack {
     super(scope, id, props);
 
     const { systemName, postConfirmationLambda } = props;
-    const uniquePrefix = `${systemName}`.replaceAll(".", "-");
 
     this.userPool = new UserPool(this, "uptick-userpool", {
       userPoolName: "uptick-userpool",
@@ -43,9 +42,9 @@ export class CognitoStack extends Stack {
       },
     });
 
-    const cognitoDomain = this.userPool.addDomain(`${uniquePrefix}-domain`, {
+    const cognitoDomain = this.userPool.addDomain(`${systemName}-domain`, {
       cognitoDomain: {
-        domainPrefix: uniquePrefix,
+        domainPrefix: systemName,
       },
       managedLoginVersion: 2,
     });
