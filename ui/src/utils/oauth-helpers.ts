@@ -17,6 +17,9 @@ export function getCognitoLoginUrl(
   authUrl.searchParams.set("state", state);
   authUrl.searchParams.set("code_challenge", codeChallenge);
   authUrl.searchParams.set("code_challenge_method", "S256");
+  // Force login prompt even if Cognito has an existing session cookie
+  // This ensures users must re-authenticate when starting a new session
+  authUrl.searchParams.set("prompt", "login");
   return authUrl.toString();
 }
 
