@@ -6,7 +6,7 @@
 pnpm install
 ```
 
-## 2. Bootstrap the CDK
+## 2. Bootstrap the CDK (if not already bootstrapped)
 
 ```
 pnpm bootstrap-up
